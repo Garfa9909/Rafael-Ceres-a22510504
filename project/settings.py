@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "pessoas",
     "escola",
+    "gym",
+    "recipes",
+    "store",
+    "bands",
 ]
 
 MIDDLEWARE = [

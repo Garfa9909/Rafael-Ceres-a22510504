@@ -14,3 +14,5 @@ class Student(models.Model):
 class Professor(models.Model):
     name = models.CharField(max_length=100)
     turn = models.OneToOneField(Turn, on_delete = models.CASCADE, related_name = "professor")
+    def __str__(self):
+        return self.name
