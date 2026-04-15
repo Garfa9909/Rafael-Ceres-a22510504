@@ -1,58 +1,82 @@
-* {
+* 
+{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* BODY */
-body {
+
+body 
+{
     font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-    background: #e6ebf2;
+    background: #1f2937;
     color: #111827;
     line-height: 1.5;
 }
 
-/* HEADER PRINCIPAL DO WEBSITE (de base.html) */
-body > header {
-    background: #1f2937;
+
+body > header 
+{
+    background: #009570;
     color: white;
     padding: 20px 40px;
 }
 
-body > header h1 {
+body > header h1 
+{
     font-size: 26px;
+    color: white;
 }
 
-body > header nav {
+body > header nav 
+{
     margin-top: 10px;
+    background-color: #00654c;
+    width:100vw;
+    margin-top:3vh;
+    margin-left:-2.5vw;
+    margin-bottom: -2.5vh;
+    display:flex;
 }
 
-body > header nav a {
+
+body > header nav a 
+{
     color: #d1d5db;
     margin-right: 20px;
     text-decoration: none;
     font-weight: 500;
+    color:white;
+    padding:2vh 1vw;
+    height:10;
 }
 
-body > header nav a:hover {
-    color: white;
+body > header nav a:hover 
+{
+    background-color: rgb(255, 255, 255);
+    background-color: #00513c;
+    border-width:1px;
 }
 
-/* MAIN */
-main {
+
+main 
+{
     max-width: 1100px;
     margin: 40px auto;
     padding: 0 20px;
 }
 
-/* TÍTULO DA PÁGINA */
-h2 {
+
+h2 
+{
     margin-bottom: 20px;
     font-size: 26px;
+    color: white;
 }
 
-/* GRID DE CURSOS */
-section > article {
+
+section > article 
+{
     background: white;
     padding: 20px;
     border-radius: 16px;
@@ -62,33 +86,37 @@ section > article {
     margin-bottom: 20px;
 }
 
-section > article:hover {
+section > article:hover 
+{
     transform: translateY(-6px);
     box-shadow: 0 16px 35px rgba(0,0,0,0.18);
 }
 
-/* HEADER DO CARD */
-article > header {
+article > header 
+{
     margin-bottom: 12px;
 }
 
-article > header > h3 {
+article > header > h3 
+{
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 4px;
 }
 
-article > header > p {
+article > header > p 
+{
     font-size: 14px;
     color: #374151;
 }
 
-/* SEÇÃO DO CARD */
-article > section {
+article > section 
+{
     margin-top: 10px;
 }
 
-article > section > h4 {
+article > section > h4 
+{
     font-size: 11px;
     text-transform: uppercase;
     color: #6b7280;
@@ -96,17 +124,17 @@ article > section > h4 {
     letter-spacing: 0.05em;
 }
 
-/* LISTA DE ELEMENTOS do CARD */
-article > section > ul {
+article > section > ul 
+{
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 }
 
-/* ITEM */
-article > section > ul > li,  article > section > ul > a{
-    background: #2563eb;
+article > section > ul > li,  article > section > ul > a
+{
+    background: #009570;
     color: white;
     padding: 6px 10px;
     border-radius: 999px;
@@ -115,11 +143,11 @@ article > section > ul > li,  article > section > ul > a{
     text-decoration: none;
 }
 
-/* FOOTER */
-footer {
+footer 
+{
     text-align: center;
     padding: 25px;
-    background: #1f2937;
-    color: #9ca3af;
+    background: #009570;
+    color: white;
     margin-top: 40px;
 }

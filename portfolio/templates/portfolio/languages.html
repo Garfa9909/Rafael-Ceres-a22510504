@@ -1,0 +1,22 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+<h2>Languages</h2>
+
+<section>
+    {% for language in languages %}
+    <article>
+        <header>
+            <h3>{{ language.name }}</h3>
+        </header>
+
+        <section>
+            <h4>{{language.level}}</h4>
+        
+        </section>
+
+        
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

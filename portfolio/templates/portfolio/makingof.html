@@ -1,0 +1,22 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+<h2>Making Of</h2>
+
+<section>
+    {% for mak in makingof %}
+    <article>
+        <header>
+            <h3>{{ mak.name }}</h3>
+        </header>
+
+        <section>
+            <h4>{{mak.description}}</h4>
+            <img src = {{mak.picture.url}} width="500">
+        </section>
+
+    
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

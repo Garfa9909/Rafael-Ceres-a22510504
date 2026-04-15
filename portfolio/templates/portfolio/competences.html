@@ -1,0 +1,28 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+<h2>Competences</h2>
+
+<section>
+    {% for competence in competences %}
+    <article>
+        <header>
+            <h3>{{ competence.name }}</h3>
+        </header>
+
+        <section>
+            <h4>Related technologies:</h4>
+            <ul>
+                {% for tech in competence.technologies.all %}
+                    <li>{{ tech.name }}</li>
+                {% empty %}
+                    <li>None</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

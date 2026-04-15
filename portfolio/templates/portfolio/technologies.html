@@ -1,0 +1,34 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+<h2>Technologies</h2>
+
+<section class = "row-section">
+    {% for technology in technologies %}
+    <a href = {{technology.link}} class = "article-link", target = _blank>
+        <article class = "row-article">
+            <header>
+                <h3>{{ technology.name }}</h3>
+                <img src = {{technology.image.url}} height="70">
+            </header>
+
+        
+
+            <section>
+                <h4>Competences</h4>
+                <ul>
+                    {% for competence in technology.competences.all %}
+                        <li>{{ competence.name }}</li>
+                    {% empty %}
+                        <li>None</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+        
+        </article>
+    </a>
+    
+    {% endfor %}
+</section>
+{% endblock %}

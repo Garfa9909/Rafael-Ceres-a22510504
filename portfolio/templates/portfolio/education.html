@@ -1,0 +1,22 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+<h2>Education</h2>
+
+<section>
+    {% for ed in education %}
+    <article>
+        <header>
+            <h3>{{ ed.name }}</h3>
+        </header>
+
+        <section>
+            <h4>{{ed.start_year}} - {{ed.end_year}}</h4>
+        
+        </section>
+
+        
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

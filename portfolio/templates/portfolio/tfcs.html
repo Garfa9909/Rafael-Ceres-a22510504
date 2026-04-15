@@ -1,0 +1,25 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+<h2>TFCs</h2>
+
+<section>
+    {% for tfc in tfcs %}
+    <article>
+        <header>
+            <h3>{{ tfc.title }} - {{tfc.author}} - {{tfc.year}}</h3>
+            <h4>{{ tfc.description }}</h4>
+        </header>
+
+        <section>
+            <h4>Degree:</h4>
+            <ul>
+                <li> {{tfc.degree.name}} </li>
+            </ul>
+        </section>
+
+    
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

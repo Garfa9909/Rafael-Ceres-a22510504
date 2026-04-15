@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Portfolio</h1>
+        <nav>
+            <a href="{% url 'competences' %}">Competences</a> 
+            <a href="{% url 'technologies' %}">Technologies</a> 
+            <a href="{% url 'education' %}">Education</a> 
+            <a href="{% url 'languages' %}">Languages</a> 
+            <a href="{% url 'degrees' %}">Degrees</a>  
+            <a href="{% url 'subjects' %}">Courses</a>
+            <a href="{% url 'professors' %}">Professors</a>
+            <a href="{% url 'projects' %}">Projects</a>    
+            <a href="{% url 'tfcs' %}">TFCs</a>
+            <a href="{% url 'makingof' %}">Making Of</a> 
+        </nav>
+    </header>
+
+
+    <main>
+        {% block content %}
+
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; Rafael Ceres Martínez 2026</p>
+    </footer>
+
+</body>
+</html>

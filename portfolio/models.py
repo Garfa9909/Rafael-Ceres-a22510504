@@ -88,9 +88,9 @@ class MakingOf(models.Model):
     picture = models.ImageField(upload_to = "making_of")
 
 class Language(models.Model):   #New entity introduced by me, in order to list the language the person knows and level of dominance
-    LEVELS = [(7, "Native"), (1, "A1"), (2, "A2"), (3, "B1"), (4, "B2"), (5, "C1"), (6, "C2")]
+    LEVELS = [("Native", "Native"), ("A1", "A1"), ("A2", "A2"), ("B1", "B1"), ("B2", "B2"), ("C1", "C1"), ("C2", "C2")]
     name = models.CharField(max_length=30)
-    level = models.IntegerField(choices = LEVELS)
+    level = models.CharField(choices = LEVELS)
 
 
 

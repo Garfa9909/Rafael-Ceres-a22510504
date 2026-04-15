@@ -1,0 +1,26 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+<h2>Courses</h2>
+
+<section>
+    {% for subject in subjects %}
+    <article>
+        <header>
+            <h3>{{ subject.name }}</h3>
+        </header>
+
+        <section>
+            <h4>Professors:</h4>
+            <ul>
+                {% for professor in subject.professors.all %}
+                    <li>{{ professor.name }} {{professor.surnames}}</li>
+                {% empty %}
+                    <li>No Professors</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}
