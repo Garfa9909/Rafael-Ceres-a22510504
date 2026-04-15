@@ -1,0 +1,26 @@
+{% extends "school/base.html" %}
+    
+{% block content %}
+<h2>Professors</h2>
+
+<section>
+    {% for professor in professors %}
+    <article>
+        <header>
+            <h3>{{ professor.name }}</h3>
+        </header>
+
+        <section>
+            <h4>Courses:</h4>
+            <ul>
+                {% for course in professor.courses.all %}
+                    <li>{{ course.name }}</li>
+                {% empty %}
+                    <li>No Courses</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

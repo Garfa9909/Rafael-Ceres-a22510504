@@ -1,3 +1,4 @@
+import os
 """
 Django settings for project project.
 
@@ -44,7 +45,10 @@ INSTALLED_APPS = [
     "store",
     "bands",
     "portfolio",
+    "school",
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -122,8 +126,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
-
-import os
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

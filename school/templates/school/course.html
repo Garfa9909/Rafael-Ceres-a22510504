@@ -1,0 +1,19 @@
+{% extends "school/base.html" %}
+    
+{% block content %}
+    <h2>Course {{ course }} </h2>
+    <h3>{{ course.name }}</h3>
+    <img src="{{ course.image.url }}" alt="Imagem do logotipo {{ curso.imagem.name }}" height = 100>
+    <p>Professor: {{ course.professor.name }}</p>
+    
+    <section>
+        <h4>Students</h4>
+        <ul>
+            {% for student in course.students.all %}
+                <li>{{ student.name }}</li>
+            {% empty %}
+                <li>No enrolled students</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

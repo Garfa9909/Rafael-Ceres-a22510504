@@ -1,0 +1,31 @@
+{% extends "school/base.html" %}
+    
+{% block content %}
+<h2>Courses</h2>
+
+<section>
+    {% for course in courses %}
+    <article>
+    <!-- cada curso é um article, 
+     com um header com o nome do curso e do professor, 
+     e uma section com a lista de cursos-->
+        <header>
+            <h3>{{ course.name }}</h3>
+            <img src = {{course.image.url}} height = 50>
+            <p>Professor: {{ course.professor.name }}</p>
+        </header>
+
+        <section>
+            <h4>Students</h4>
+            <ul>
+                {% for student in course.students.all %}
+                    <li>{{ student.name }}</li>
+                {% empty %}
+                    <li>No enrolled students</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

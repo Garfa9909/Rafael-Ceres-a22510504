@@ -1,0 +1,26 @@
+{% extends "school/base.html" %}
+    
+{% block content %}
+<h2>Students</h2>
+
+<section>
+    {% for student in students %}
+    <article>
+        <header>
+            <h3>{{ student.name }}</h3>
+        </header>
+
+        <section>
+            <h4>Courses:</h4>
+            <ul>
+                {% for course in student.courses.all %}
+                    <a class = "course_link" href="{% url 'course' course.id %}">{{ course.name }}</a>
+                {% empty %}
+                    <li>No Courses</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}
