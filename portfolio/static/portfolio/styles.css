@@ -75,7 +75,7 @@ h2
 }
 
 
-section > article 
+section > article, section>a>article
 {
     background: white;
     padding: 20px;
@@ -86,7 +86,7 @@ section > article
     margin-bottom: 20px;
 }
 
-section > article:hover 
+section > article:hover, section>a>article:hover
 {
     transform: translateY(-6px);
     box-shadow: 0 16px 35px rgba(0,0,0,0.18);
@@ -185,4 +185,19 @@ footer
     background: #009570;
     color: white;
     margin-top: 40px;
+}
+
+.redirect-button
+{
+    background-color:white;
+    padding:2vw 4vh;
+    margin:2vw 4vh;
+
+}
+
+form
+{
+    background-color:white;
+    padding:2vw 4vh;
+    margin:2vw 4vh;
 }

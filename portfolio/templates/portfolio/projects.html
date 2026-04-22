@@ -1,34 +1,38 @@
 {% extends "portfolio/base.html" %}
     
 {% block content %}
+
+<a href = "{% url 'new-project' %}" class = "redirect-button"> New Project </a>
 <h2>Projects</h2>
 
 <section>
     {% for project in projects %}
-    <article>
-        <header>
-            <h3>{{ project.name }}</h3>
-            <h4>{{ project.description }}</h4>
-        </header>
+    <a href = {% url 'project' id=project.id %}>
+        <article>
+            <header>
+                <h3>{{ project.name }}</h3>
+                <h4>{{ project.description }}</h4>
+            </header>
 
-        <section>
-            <h4>Course:</h4>
-            <ul>
-                <li> {{project.subject.name}} </li>
-            </ul>
-        </section>
+            <section>
+                <h4>Course:</h4>
+                <ul>
+                    <li> {{project.subject.name}} </li>
+                </ul>
+            </section>
 
-        <section>
-            <h4>Competences used:</h4>
-            <ul>
-                {% for competence in project.competences.all %}
-                    <li>{{competence.name}}</li>
-                {% empty %}
-                    <li>None</li>
-                {% endfor %}
-            </ul>
-        </section>
-    </article>
+            <section>
+                <h4>Competences used:</h4>
+                <ul>
+                    {% for competence in project.competences.all %}
+                        <li>{{competence.name}}</li>
+                    {% empty %}
+                        <li>None</li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </article>
+    </a>
     {% endfor %}
 </section>
 {% endblock %}

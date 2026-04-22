@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Professor, Subject, Degree, Project, Technology, Competence, Tfc, Education, Language, MakingOf
+from .forms import ProjectForm
 
 def professors_view(request):
     professors = Professor.objects.prefetch_related('subjects').all()
@@ -43,3 +44,40 @@ def makingof_view(request):
     makingof = MakingOf.objects.all()
     return render(request, 'portfolio/makingof.html', {'makingof': makingof})
 
+
+
+def project_view(request, id):
+    project = Project.objects.get(id=id)
+    context = {'project':project}
+
+    return render(request, 'portfolio/project.html', context)
+
+def new_project_view(request):
+    form = ProjectForm(request.POST or None, request.FILES)
+
+    if(form.is_valid()):
+        form.save()
+        return redirect('projects')
+
+    context = {'form':form}
+    return render(request, 'portfolio/new_project.html', context)
+
+def edit_project_view(request, id):
+
+    project = Project.objects.get(id=id)
+    
+    if(request.POST):
+        form = ProjectForm(request.POST or None, request.FILES, instance = project)
+        if(form.is_valid()):
+            form.save()
+            return redirect('projects')
+    else:
+        form = ProjectForm(instance=project)
+
+    context = {'form':form, 'project':project}
+    return render(request, "portfolio/edit_project.html", context)
+
+def delete_project_view(request, id):
+
+    Project.objects.get(id=id).delete()
+    return redirect("projects")

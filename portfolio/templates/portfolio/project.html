@@ -1,0 +1,32 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+
+<a href = "{% url 'edit-project' id=project.id%}" class = "redirect-button"> Edit Project </a>
+<a href = "{% url 'delete-project' id=project.id%}" class = "redirect-button"> Delete Project </a>
+
+ <article>
+        <header>
+            <h3>{{ project.name }}</h3>
+            <h4>{{ project.description }}</h4>
+        </header>
+
+        <section>
+            <h4>Course:</h4>
+            <ul>
+                <li> {{project.subject.name}} </li>
+            </ul>
+        </section>
+
+        <section>
+            <h4>Competences used:</h4>
+            <ul>
+                {% for competence in project.competences.all %}
+                    <li>{{competence.name}}</li>
+                {% empty %}
+                    <li>None</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </article>
+{% endblock %}

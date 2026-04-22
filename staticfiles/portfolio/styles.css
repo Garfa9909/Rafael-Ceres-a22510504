@@ -37,17 +37,17 @@ body > header nav
     margin-left:-2.5vw;
     margin-bottom: -2.5vh;
     display:flex;
+    padding-left: 1.5vw;
 }
 
 
 body > header nav a 
 {
     color: #d1d5db;
-    margin-right: 20px;
     text-decoration: none;
     font-weight: 500;
     color:white;
-    padding:2vh 1vw;
+    padding:2vh 1.5vw;
     height:10;
 }
 
@@ -75,7 +75,7 @@ h2
 }
 
 
-section > article 
+section > article, section>a>article
 {
     background: white;
     padding: 20px;
@@ -86,7 +86,42 @@ section > article
     margin-bottom: 20px;
 }
 
-section > article:hover 
+section > article:hover, section>a>article:hover
+{
+    transform: translateY(-6px);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.18);
+}
+
+.row-section
+{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.row-article
+{
+    
+    width:15vw;
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: all 0.25s ease;
+}
+
+.article-link
+{
+    margin-right: 2vw;
+    text-decoration: none;
+    color:black;
+    margin-bottom: 2vh;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: all 0.25s ease;
+}
+
+.article-link:hover
 {
     transform: translateY(-6px);
     box-shadow: 0 16px 35px rgba(0,0,0,0.18);
@@ -150,4 +185,19 @@ footer
     background: #009570;
     color: white;
     margin-top: 40px;
+}
+
+.redirect-button
+{
+    background-color:white;
+    padding:2vw 4vh;
+    margin:2vw 4vh;
+
+}
+
+form
+{
+    background-color:white;
+    padding:2vw 4vh;
+    margin:2vw 4vh;
 }
