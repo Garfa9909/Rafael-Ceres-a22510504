@@ -5,7 +5,12 @@
 <a href = "{% url 'edit-project' id=project.id%}" class = "redirect-button"> Edit Project </a>
 <a href = "{% url 'delete-project' id=project.id%}" class = "redirect-button"> Delete Project </a>
 
- <article>
+<br>
+<br>
+<br>
+
+<section>
+    <article>
         <header>
             <h3>{{ project.name }}</h3>
             <h4>{{ project.description }}</h4>
@@ -29,4 +34,8 @@
             </ul>
         </section>
     </article>
+
+</section>
+
+ 
 {% endblock %}

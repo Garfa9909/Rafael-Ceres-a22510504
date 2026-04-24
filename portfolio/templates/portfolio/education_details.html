@@ -1,0 +1,30 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+
+<a href = "{% url 'edit-education' id=education.id%}" class = "redirect-button"> Edit Education </a>
+<a href = "{% url 'delete-education' id=education.id%}" class = "redirect-button"> Delete Education </a>
+
+<br>
+<br>
+<br>
+
+<section>   
+    <article>
+            <header>
+                <h3>{{ education.name }}</h3>
+            </header>
+
+            <section>
+                <h4>{{education.start_year}} - {{education.end_year}}</h4>
+            
+            </section>
+
+    </article>
+</section>
+
+ 
+{% endblock %}
+
+
+

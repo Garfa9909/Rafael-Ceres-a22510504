@@ -1,18 +1,21 @@
 {% extends "portfolio/base.html" %}
     
 {% block content %}
-<a href = "{% url 'new-technology' %}" class = "redirect-button"> New Technology </a>
-<br>
-<br>
-<h2>Technologies</h2>
 
-<section class = "row-section">
-    {% for technology in technologies %}
-    <a href = {% url 'technology' id=technology.id %}>
-        <article class = "row-article">
+<a href = "{% url 'edit-technology' id=technology.id%}" class = "redirect-button"> Edit Technology </a>
+<a href = "{% url 'delete-technology' id=technology.id%}" class = "redirect-button"> Delete Technology </a>
+
+<br>
+<br>
+<br>
+
+<section>
+    <article>
             <header>
                 <h3>{{ technology.name }}</h3>
                 <img src = {{technology.image.url}} height="70">
+                <br>
+                 <a href = {{technology.link}} class = "article-link", target = _blank> Link to website </a>
             </header>
 
         
@@ -30,8 +33,8 @@
 
         
         </article>
-    </a>
-    
-    {% endfor %}
+
 </section>
+
+ 
 {% endblock %}

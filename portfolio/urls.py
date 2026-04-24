@@ -18,5 +18,22 @@ urlpatterns = [
     path("edit_project/<int:id>/", views.edit_project_view, name = "edit-project"),
     path("delete_project/<int:id>/", views.delete_project_view, name = "delete-project"),
 
+    path("new_technology/", views.new_technology_view, name = "new-technology"),
+    path("technology/<int:id>", views.technology_view, name = "technology"),
+    path("edit_technology/<int:id>/", views.edit_technology_view, name = "edit-technology"),
+    path("delete_technology/<int:id>/", views.delete_technology_view, name = "delete-technology"),
+
+    path("new_competence/", views.new_competence_view, name = "new-competence"),
+    path("competence/<int:id>", views.competence_view, name = "competence"),
+    path("edit_competence/<int:id>/", views.edit_competence_view, name = "edit-competence"),
+    path("delete_competence/<int:id>/", views.delete_competence_view, name = "delete-competence"),
+
+    path("new_education/", views.new_education_view, name = "new-education"),
+    path("education/<int:id>", views.education_details_view, name = "education-details"),
+    path("edit_education/<int:id>/", views.edit_education_view, name = "edit-education"),
+    path("delete_education/<int:id>/", views.delete_education_view, name = "delete-education"),
+
+    path("about/", views.about_view, name = "about"),
+
 
 ]

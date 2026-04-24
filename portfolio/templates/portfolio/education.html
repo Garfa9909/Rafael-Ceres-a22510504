@@ -4,19 +4,26 @@
 <h2>Education</h2>
 
 <section>
+    <a href = "{% url 'new-education' %}" class = "redirect-button"> New Education </a>
+    <br>
+    <br>
+
+    <h2> Education </h2>
     {% for ed in education %}
-    <article>
-        <header>
-            <h3>{{ ed.name }}</h3>
-        </header>
+    <a href = {% url 'education-details' id=ed.id %}>
+        <article>
+            <header>
+                <h3>{{ ed.name }}</h3>
+            </header>
 
-        <section>
-            <h4>{{ed.start_year}} - {{ed.end_year}}</h4>
-        
-        </section>
+            <section>
+                <h4>{{ed.start_year}} - {{ed.end_year}}</h4>
+            
+            </section>
 
-        
-    </article>
+            
+        </article>
+    </a>
     {% endfor %}
 </section>
 {% endblock %}

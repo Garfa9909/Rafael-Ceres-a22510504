@@ -1,15 +1,16 @@
 {% extends "portfolio/base.html" %}
     
 {% block content %}
-<a href = "{% url 'new-competence' %}" class = "redirect-button"> New Competence </a>
-<br>
-<br>
-<h2>Competences</h2>
 
-<section>
-    {% for competence in competences %}
-    <a href = {% url 'competence' id=competence.id %}>
-        <article>
+<a href = "{% url 'edit-competence' id=competence.id%}" class = "redirect-button"> Edit Competence </a>
+<a href = "{% url 'delete-competence' id=competence.id%}" class = "redirect-button"> Delete Competence </a>
+
+<br>
+<br>
+<br>
+
+<section>   
+    <article>
             <header>
                 <h3>{{ competence.name }}</h3>
             </header>
@@ -27,7 +28,7 @@
 
             
         </article>
-    </a>
-    {% endfor %}
 </section>
+
+ 
 {% endblock %}

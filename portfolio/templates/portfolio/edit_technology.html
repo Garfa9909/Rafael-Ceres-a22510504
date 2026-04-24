@@ -1,8 +1,8 @@
 {% extends 'portfolio/base.html' %}
 
 {% block content %}
-    <h3> Edit Project </h3>
-    <form action = "{% url 'edit-project' id=project.id%}" method = "post" enctype = 'multipart/form-data'>
+    <h3> Edit Technology </h3>
+    <form action = "{% url 'edit-technology' id=technology.id%}" method = "post" enctype = 'multipart/form-data'>
         {% csrf_token %}
         {{form.as_p}}
 

@@ -86,6 +86,13 @@ section > article, section>a>article
     margin-bottom: 20px;
 }
 
+section>a
+{
+    text-decoration: none;
+    color:black;
+    margin-right:1vw;
+}
+
 section > article:hover, section>a>article:hover
 {
     transform: translateY(-6px);
@@ -190,14 +197,56 @@ footer
 .redirect-button
 {
     background-color:white;
-    padding:2vw 4vh;
-    margin:2vw 4vh;
+    padding:1vw 2vh;
+    text-decoration: none;
+    border-radius:10px;
+    color:black;
+    margin-right:2vw;
+    transition: all 0.25s ease;
+
+}
+
+.redirect-button:hover
+{
+    background-color:white;
+    padding:1vw 2vh;
+    text-decoration: none;
+    border-radius:10px;
+    color:black;
+    margin-right:2vw;
+    transform: translateY(-6px);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.18);
 
 }
 
 form
 {
     background-color:white;
-    padding:2vw 4vh;
-    margin:2vw 4vh;
+    padding:4vh 2vw;
+    margin:4vh 2vw;
+    border-radius:15px;
+}
+
+.submit-button
+{
+    background: #009570;
+    color:white;
+    padding: 2vh 1vw;
+    margin: 2vh 1vw;
+    border-radius:10px;
+    font-size:medium;
+    transition: all 0.25s ease;
+}
+
+.submit-button:hover
+{
+    background: #009570;
+    color:white;
+    padding: 2vh 1vw;
+    margin: 2vh 1vw;
+    border-radius:10px;
+    font-size:medium;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.18);
+    cursor:pointer;
 }

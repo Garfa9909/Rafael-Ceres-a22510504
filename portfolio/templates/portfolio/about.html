@@ -1,0 +1,24 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+
+<h2> About this page </h2>
+
+<section>
+    <article>
+        <p> This page was made with Django, using MVT Model: </p>
+        <br>
+        <img src = {{mvt.picture.url}} width="500">
+        <br>
+
+        <ul>
+            <li><b>Model:</b> Stores the information of the tables and instances.</li>
+            <li> <b>View:</b> Obtains the data from the Model and passes it to the Template. It also obtains user input from the Template, which it uses to update the data with the Model. </li>
+            <li> <b>Template: </b> What the user sees, displays data and reads user input. </li>
+        </ul>
+    </article>
+
+</section>
+
+ 
+{% endblock %}
