@@ -250,3 +250,8 @@ form
     box-shadow: 0 16px 35px rgba(0,0,0,0.18);
     cursor:pointer;
 }
+
+section > article > ul > li
+{
+    margin: 2vh 2vw;
+}

@@ -24,15 +24,15 @@
         </section>
 
         <section>
-            <h4>Competences used:</h4>
-            <ul>
-                {% for competence in project.competences.all %}
-                    <li>{{competence.name}}</li>
-                {% empty %}
-                    <li>None</li>
-                {% endfor %}
-            </ul>
-        </section>
+                <h4>Technologies used:</h4>
+                <ul>
+                    {% for technology in project.technologies.all %}
+                        <li>{{technology.name}}</li>
+                    {% empty %}
+                        <li>None</li>
+                    {% endfor %}
+                </ul>
+            </section>
     </article>
 
 </section>

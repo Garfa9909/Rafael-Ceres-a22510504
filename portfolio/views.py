@@ -53,14 +53,16 @@ def project_view(request, id):
     return render(request, 'portfolio/project.html', context)
 
 def new_project_view(request):
-    form = ProjectForm(request.POST or None, request.FILES)
+    form = ProjectForm(request.POST, request.FILES)
 
     if(form.is_valid()):
         form.save()
         return redirect('projects')
-
+    
     context = {'form':form}
-    return render(request, 'portfolio/new_project.html', context)
+    return render(request, "portfolio/new_project.html", context)
+
+
 
 def edit_project_view(request, id):
 
@@ -207,4 +209,7 @@ def delete_education_view(request, id):
 def about_view(request):
     makingof = MakingOf.objects.all()
     mvt_entry = MakingOf.objects.get(name = "MVT Model")
-    return render(request, 'portfolio/about.html', {'makingof': makingof, 'mvt':mvt_entry})
+    er_entry = MakingOf.objects.get(name = "ER diagram")
+    technologies = Project.objects.get(name = "Portfolio").technologies.all()
+    map_entry = MakingOf.objects.get(name = "Application map")
+    return render(request, 'portfolio/about.html', {'makingof': makingof, 'mvt':mvt_entry, 'er':er_entry, 'technologies':technologies, 'map':map_entry})

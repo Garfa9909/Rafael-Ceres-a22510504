@@ -59,6 +59,7 @@ class Project(models.Model):
     name = models.CharField(max_length = 100)
     description = models.CharField(max_length = 1000)
     competences = models.ManyToManyField(Competence, related_name = "projects")
+    technologies = models.ManyToManyField(Technology, related_name = "projects")
     subject = models.ForeignKey(Subject, on_delete = models.CASCADE, related_name = "projects")
 
     def __str__(self):

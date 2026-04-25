@@ -4,6 +4,8 @@
 
 <h2> About this page </h2>
 
+<h2> MVT model </h2>
+
 <section>
     <article>
         <p> This page was made with Django, using MVT Model: </p>
@@ -16,9 +18,113 @@
             <li> <b>View:</b> Obtains the data from the Model and passes it to the Template. It also obtains user input from the Template, which it uses to update the data with the Model. </li>
             <li> <b>Template: </b> What the user sees, displays data and reads user input. </li>
         </ul>
+
+        <p> Tutorial on how to make a form for adding new entries: </p>
+        <br>
+
+        <iframe src="https://drive.google.com/file/d/1hhgYQgUADa_PCXBR66vGsiKr9R9BuyCK/preview" width="640" height="480"></iframe>
+
+    </article>
+
+    
+
+</section>
+
+<h2> Modelling </h2>
+
+<section>
+    <article>
+        <p> This is the ER diagram: </p>
+        <br>
+        <img src = {{er.picture.url}} width="500">
+        <br>
+
+        <ul>
+            <li> <b>Degree:</b>  A degree can either be a bachelor or master’s degree (field with two options), and it also has a title and multiple subjects.  </li>
+            <li> <b>Subject:</b>  Each subject has a unique code and belongs to only one degree (although some subjects are in multiple degrees, they have different codes depending on the degree they’re associated with, so they’re technically different instances). Also, each subject is taught by multiple professors and each professor teaches multiple subjects.  </li>
+            <li> <b>Professor:</b>  Each of them has a link to their page in Lusófona and teaches one or multiple subjects. </li>
+            <li> <b>Competence:</b>  The different skills a person has. Each technology requires one or more.  </li>
+            <li> <b>Technology:</b>  Includes name, logo, link to the official page and my personal level of interest/mastery of them, as well as the competences required for using them. Each technology requires one or more competences, and each competence can be required in one or more technologies. </li>
+            <li> <b>Project:</b>  Each project is developed in one subject (foreign key). And requires specific competences and technologies. Initially, I thought I’d only include technologies as a many to many field, as they already have a many to many relationship with competences so it’d be redundant to also include competences; but I added them anyway because additional competences can be required for a project even if the technologies do not require them.  </li>
+            <li> <b>TFC:</b>  Some of the fields I included from the JSON are title, author, year, description, as well as degree as foreign key. </li>
+            <li> <b>Education:</b> Includes course name, and start/end year in order to be able to order it chronologically. I thought of including a foreign key to the degree, but I left it like that because there can be also external courses that are not in this database.  </li>
+            <li> <b>Making of:</b>  For each of the “steps” of the making of, I included a title, description and picture. </li>
+            <li> <b>Language:</b> An entity introduced by me because I thought it’s relevant to include the languages one speaks in the portfolio. It includes the name of the language and level of mastery (from 1, which is A1, to 7, which is native).  </li>
+        </ul>
     </article>
 
 </section>
+
+<h2> Technologies Used </h2>
+
+
+<section>
+    {% for technology in technologies %}
+    <a href = {% url 'technology' id=technology.id %}>
+        <article>
+            <header>
+                <h3>{{ technology.name }}</h3>
+                <img src = {{technology.image.url}} height="70">
+                <p> {{technology.description}} </p>
+            </header>
+
+        
+
+        
+        </article>
+    </a>
+    
+    {% endfor %}
+</section>
+
+<h2> Page Structure </h2>
+
+<section>
+    <article>
+        <p> This is a map with the basic structure: </p>
+        <br>
+        <img src = {{map.picture.url}} width="1000">
+        <br>
+
+        <p> All pages extend from base.html, which makes it easier to access any other page from the one you're in. </p>
+    </article>
+
+</section>
+
+<h2> GitHub Repository </h2>
+
+<section>
+    <article>
+        <p> This page was made using a GutHub codespace </p>
+        <br>
+        <a href = "https://github.com/Garfa9909/Rafael-Ceres-a22510504", target = _blank> Link to repository </a>
+        <br>
+
+        <p> With this codespace, it's possible to make changes from anywhere without the need to have the repository cloned locally. </p>
+    </article>
+
+</section>
+
+<h2>Making Of</h2>
+
+<section>
+    {% for mak in makingof %}
+    <article>
+        <header>
+            <h3>{{ mak.name }}</h3>
+        </header>
+
+        <section>
+            <h4>{{mak.description}}</h4>
+            <img src = {{mak.picture.url}} width="500">
+        </section>
+
+    
+    </article>
+    {% endfor %}
+</section>
+
+
 
  
 {% endblock %}

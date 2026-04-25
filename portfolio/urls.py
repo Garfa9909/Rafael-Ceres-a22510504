@@ -13,7 +13,8 @@ urlpatterns = [
     path('education/', views.education_view, name="education"),
     path('languages/', views.languages_view, name="languages"),
     path('makingof/', views.makingof_view, name="makingof"),
-    path("new_project/", views.new_project_view, name = "new-project"),
+
+    path("new_project", views.new_project_view, name = "new-project"),
     path("project/<int:id>", views.project_view, name = "project"),
     path("edit_project/<int:id>/", views.edit_project_view, name = "edit-project"),
     path("delete_project/<int:id>/", views.delete_project_view, name = "delete-project"),
