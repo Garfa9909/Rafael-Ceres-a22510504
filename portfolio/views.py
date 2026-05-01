@@ -2,56 +2,72 @@ from django.shortcuts import render, redirect
 
 from .models import Professor, Subject, Degree, Project, Technology, Competence, Tfc, Education, Language, MakingOf
 from .forms import ProjectForm, TechnologyForm, CompetenceForm, EducationForm
+from django.contrib.auth.decorators import user_passes_test, login_required
 
+def es_gestor(user):
+    return user.groups.filter(name='gestor-portfolio').exists()
+
+@login_required
 def professors_view(request):
     professors = Professor.objects.prefetch_related('subjects').all()
     return render(request, 'portfolio/professors.html', {'professors': professors})
 
+@login_required
 def subjects_view(request):
     subjects = Subject.objects.select_related('degree').prefetch_related('professors').all()
     return render(request, 'portfolio/subjects.html', {'subjects': subjects})
 
+@login_required
 def degrees_view(request):
     degrees = Degree.objects.all()
     return render(request, 'portfolio/degrees.html', {'degrees': degrees})
 
+@login_required
 def projects_view(request):
     projects = Project.objects.select_related('subject').all()
     return render(request, 'portfolio/projects.html', {'projects': projects})
 
 
+@login_required
 def competences_view(request):
     competences = Competence.objects.prefetch_related('technologies').all()
     return render(request, 'portfolio/competences.html', {'competences': competences})
 
+@login_required
 def technologies_view(request):
     technologies = Technology.objects.prefetch_related('competences').all()
     return render(request, 'portfolio/technologies.html', {'technologies': technologies})
 
+@login_required
 def tfcs_view(request):
     tfcs = Tfc.objects.select_related('degree').all()
     return render(request, 'portfolio/tfcs.html', {'tfcs': tfcs})
 
+@login_required
 def education_view(request):
     education = Education.objects.all().order_by('start_year')
     return render(request, 'portfolio/education.html', {'education': education})
 
+@login_required
 def languages_view(request):
     languages = Language.objects.all()
     return render(request, 'portfolio/languages.html', {'languages': languages})
 
+@login_required
 def makingof_view(request):
     makingof = MakingOf.objects.all()
     return render(request, 'portfolio/makingof.html', {'makingof': makingof})
 
 
-
+@login_required
 def project_view(request, id):
     project = Project.objects.get(id=id)
     context = {'project':project}
 
     return render(request, 'portfolio/project.html', context)
 
+@login_required
+@user_passes_test(es_gestor)
 def new_project_view(request):
     form = ProjectForm(request.POST, request.FILES)
 
@@ -63,7 +79,8 @@ def new_project_view(request):
     return render(request, "portfolio/new_project.html", context)
 
 
-
+@login_required
+@user_passes_test(es_gestor)
 def edit_project_view(request, id):
 
     project = Project.objects.get(id=id)
@@ -78,7 +95,8 @@ def edit_project_view(request, id):
 
     context = {'form':form, 'project':project}
     return render(request, "portfolio/edit_project.html", context)
-
+@login_required
+@user_passes_test(es_gestor)
 def delete_project_view(request, id):
 
     Project.objects.get(id=id).delete()
@@ -87,13 +105,15 @@ def delete_project_view(request, id):
 
 
 
-
+@login_required
 def technology_view(request, id):
     technology = Technology.objects.get(id=id)
     context = {'technology':technology}
 
     return render(request, 'portfolio/technology.html', context)
 
+@login_required
+@user_passes_test(es_gestor)
 def new_technology_view(request):
     form = TechnologyForm(request.POST or None, request.FILES)
 
@@ -104,6 +124,8 @@ def new_technology_view(request):
     context = {'form':form}
     return render(request, 'portfolio/new_technology.html', context)
 
+@login_required
+@user_passes_test(es_gestor)
 def edit_technology_view(request, id):
 
     technology = Technology.objects.get(id=id)
@@ -119,6 +141,8 @@ def edit_technology_view(request, id):
     context = {'form':form, 'technology':technology}
     return render(request, "portfolio/edit_technology.html", context)
 
+@login_required
+@user_passes_test(es_gestor)
 def delete_technology_view(request, id):
 
     Technology.objects.get(id=id).delete()
@@ -126,13 +150,15 @@ def delete_technology_view(request, id):
 
 
 
-
+@login_required
 def competence_view(request, id):
     competence = Competence.objects.get(id=id)
     context = {'competence':competence}
 
     return render(request, 'portfolio/competence.html', context)
 
+@login_required
+@user_passes_test(es_gestor)
 def new_competence_view(request):
     form = CompetenceForm(request.POST or None, request.FILES)
 
@@ -143,6 +169,8 @@ def new_competence_view(request):
     context = {'form':form}
     return render(request, 'portfolio/new_competence.html', context)
 
+@login_required
+@user_passes_test(es_gestor)
 def edit_competence_view(request, id):
 
     competence = Competence.objects.get(id=id)
@@ -158,6 +186,8 @@ def edit_competence_view(request, id):
     context = {'form':form, 'competence':competence}
     return render(request, "portfolio/edit_competence.html", context)
 
+@login_required
+@user_passes_test(es_gestor)
 def delete_competence_view(request, id):
 
     Competence.objects.get(id=id).delete()
@@ -168,13 +198,15 @@ def delete_competence_view(request, id):
 
 
 
-
+@login_required
 def education_details_view(request, id):
     education = Education.objects.get(id=id)
     context = {'education':education}
 
     return render(request, 'portfolio/education_details.html', context)
 
+@login_required
+@user_passes_test(es_gestor)
 def new_education_view(request):
     form = EducationForm(request.POST or None, request.FILES)
 
@@ -185,6 +217,8 @@ def new_education_view(request):
     context = {'form':form}
     return render(request, 'portfolio/new_education.html', context)
 
+@login_required
+@user_passes_test(es_gestor)
 def edit_education_view(request, id):
 
     education = Education.objects.get(id=id)
@@ -200,12 +234,14 @@ def edit_education_view(request, id):
     context = {'form':form, 'education':education}
     return render(request, "portfolio/edit_education.html", context)
 
+@login_required
+@user_passes_test(es_gestor)
 def delete_education_view(request, id):
 
     Education.objects.get(id=id).delete()
     return redirect("education")
 
-
+@login_required
 def about_view(request):
     makingof = MakingOf.objects.all()
     mvt_entry = MakingOf.objects.get(name = "MVT Model")

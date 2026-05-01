@@ -2,8 +2,10 @@
     
 {% block content %}
 
-<a href = "{% url 'edit-competence' id=competence.id%}" class = "redirect-button"> Edit Competence </a>
-<a href = "{% url 'delete-competence' id=competence.id%}" class = "redirect-button"> Delete Competence </a>
+{% if user.is_authenticated and user.groups.all.0.name == "gestor-portfolio" %}
+    <a href = "{% url 'edit-competence' id=competence.id%}" class = "redirect-button"> Edit Competence </a>
+    <a href = "{% url 'delete-competence' id=competence.id%}" class = "redirect-button"> Delete Competence </a>
+{% endif %}
 
 <br>
 <br>

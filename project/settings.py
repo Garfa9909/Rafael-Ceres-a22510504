@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "bands",
     "portfolio",
     "school",
+    "accounts",
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -130,3 +131,7 @@ STATIC_URL = "static/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'login'

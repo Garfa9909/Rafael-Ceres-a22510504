@@ -23,6 +23,11 @@
             <a href="{% url 'tfcs' %}">TFCs</a>
             <a href="{% url 'makingof' %}">Making Of</a> 
             <a href="{% url 'about' %}">About</a> 
+            {% if user.is_authenticated%}
+                <a href = "{% url 'logout' %}" class = "login-link"> Logout </a>
+            {% else %}
+                <a href = "{% url 'login' %}" class = "login-link"> Login </a>
+            {% endif %}
         </nav>
     </header>
 

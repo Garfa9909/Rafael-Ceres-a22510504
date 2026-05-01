@@ -2,7 +2,11 @@
     
 {% block content %}
 
-<a href = "{% url 'new-project' %}" class = "redirect-button"> New Project </a>
+{% if user.is_authenticated and user.groups.all.0.name == "gestor-portfolio" %}
+    <a href = "{% url 'new-project' %}" class = "redirect-button"> New Project </a>
+{% endif %}
+
+
 
 <br>
 <br>

@@ -1,10 +1,12 @@
 {% extends "portfolio/base.html" %}
     
 {% block content %}
-<h2>Education</h2>
 
 <section>
-    <a href = "{% url 'new-education' %}" class = "redirect-button"> New Education </a>
+    {% if user.is_authenticated and user.groups.all.0.name == "gestor-portfolio" %}
+        <a href = "{% url 'new-education' %}" class = "redirect-button"> New Education </a>
+    {% endif %}
+    
     <br>
     <br>
 

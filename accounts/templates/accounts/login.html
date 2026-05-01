@@ -1,0 +1,13 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+<h2> Login </h2>
+
+<form method = "POST" action = {% url 'login' %}>
+    {%csrf_token%}
+    {{ form.as_p }}
+    <button type="submit" class = "submit-button">Login</button>
+</form>
+<a href = "{% url 'register' %}" class="redirect-button"> New user? Register </a>
+
+{% endblock %}
