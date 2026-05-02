@@ -10,18 +10,41 @@
 
 <section>
     {% for article in articles %}
-    <a href = {% url 'article' id=article.id %}>
+    <a href = {% url 'article' id=article.id %} class = "article">
         <article>
             <header>
-                <h2>{{ article.author.name }}</h2>
+                <h3 class = "article-author">{{ article.author.username }}</h3>
             </header>
 
             <section>
-                <h4> {{article.text}} </h4>
-                <img src = {{article.picture.url}}, width="500">
+                <p class = "article-text"> {{article.text}} </p>
+                <img src = '{{ article.picture.url }}', width="500">
+                <br>
                 {% if article.link %}
-                    <a href = {{article.link}}> {{article.link}} </a>
+                    <a href = {{article.link}} class = "article-link"> {{article.link}}  </a>
+                    <br>
                 {% endif %}
+                
+                {% load static %}
+                <div class = "like-comment-count">
+                
+                    <a href = {% url 'article' id=article.id%}>
+                        {% if user in article.liked_users.all %}
+                            <img src = {% static 'images/like1.png' %} height = "25" class = "icon"> 
+                        {% else %}
+                            <img src = {% static 'images/like0.png' %} height = "25" class = "icon"> 
+                        {% endif %}
+                    </a>
+                    <span class = "count"> {{ article.liked_users.count }} </span>
+                    
+
+
+                    <a href = {% url 'article' id=article.id%}>
+                        <img src = {% static 'images/comment.png' %} height = "25" class = "icon"> 
+                    </a>
+                    <span class = "count"> {{ article.comments.count }} </span>
+
+                </div>
             </section>
 
             

@@ -12,22 +12,82 @@
 <br>
 <br>
 
-<article>
+<section>
+        <article>
+            <header>
+                <h3 class = "article-author">{{ article.author.username }}</h3>
+            </header>
 
-    <header>
-        <h2>{{ article.author.name }}</h2>
-    </header>
+            <section>
+                <p class = "article-text"> {{article.text}} </p>
+                <img src = '{{ article.picture.url }}', width="500">
+                <br>
+                {% if article.link %}
+                    <a href = {{article.link}} class = "article-link"> {{article.link}}  </a>
+                    <br>
+                {% endif %}
 
-     <section>
-        <h4> {{article.text}} </h4>
-        <img src = {{article.picture.url}}, width="500">
-        {% if article.link %}
-            <a href = {{article.link}}> {{article.link}} </a>
-        {% endif %}
-    </section>
+
+                {% load static %}
+
+                <div class = "like-comment-count">
+                
+                    <a href = {% url 'like-article' id=article.id%}>
+                        {% if user in article.liked_users.all %}
+                            <img src = {% static 'images/like1.png' %} height = "25" class = "icon"> 
+                        {% else %}
+                            <img src = {% static 'images/like0.png' %} height = "25" class = "icon"> 
+                        {% endif %}
+                    </a>
+                    <span class = "count"> {{ article.liked_users.count }} </span>
+                    
+
+
+                    <img src = {% static 'images/comment.png' %} height = "25" class = "icon">
+                    <span class = "count"> {{ article.comments.count }} </span>
+
+                </div>
+                <br>
+
+                <hr>
+                <br>
+
+                <h3> Comments </h3>
+                <form action = {% url 'comment-article' id=article.id %} method = "post" enctype = 'multipart/form-data'>
+                    {% csrf_token %}
+                    {{comment_form.as_p}}
+
+                    <input class = "submit-button" type = "submit" value = "Submit comment">
+                </form>
+
+                <hr>
+
+                <section>
+                    {% for comment in article.comments.all %}
+                        <div class = "comment">
+                            <h3> {{comment.user.username}} </h3>
+                            <p> {{comment.text}} </p>
+                        </div>
+
+                        <hr>
+                    
+                    {% empty %} 
+                        <p> No comments yet </p>
+                    {% endfor %}
+                </section>
+
+                
+
+
+
+
+
+            </section>
 
             
-</article>
+        </article>
+
+</section>
 
  
 {% endblock %}
