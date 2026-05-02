@@ -5,8 +5,11 @@ from django.contrib.auth.models import User
 class RegisterForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ["username", "password1", "password2"]
+        fields = ["username", "email", "password1", "password2"]
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username')
     password = forms.CharField(widget=forms.PasswordInput, label='Password')
+
+class MagicLinkLoginForm(forms.Form):
+    email = forms.EmailField(label="Email")

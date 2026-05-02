@@ -1,0 +1,32 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+{% if user.is_authenticated and es_autor %}
+    <a href = "{% url 'new-article' %}" class = "redirect-button"> Write Article </a>
+{% endif %}
+<br>
+<br>
+<h2>Articles</h2>
+
+<section>
+    {% for article in articles %}
+    <a href = {% url 'article' id=article.id %}>
+        <article>
+            <header>
+                <h2>{{ article.author.name }}</h2>
+            </header>
+
+            <section>
+                <h4> {{article.text}} </h4>
+                <img src = {{article.picture.url}}, width="500">
+                {% if article.link %}
+                    <a href = {{article.link}}> {{article.link}} </a>
+                {% endif %}
+            </section>
+
+            
+        </article>
+    </a>
+    {% endfor %}
+</section>
+{% endblock %}

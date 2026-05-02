@@ -7,7 +7,12 @@
     {%csrf_token%}
     {{ form.as_p }}
     <button type="submit" class = "submit-button">Login</button>
+    {% if not valid %}
+        <p class = "error-msg"> Credentials are not correct </p>
+    {% endif %}
 </form>
 <a href = "{% url 'register' %}" class="redirect-button"> New user? Register </a>
+<a href = "{% url 'magic-link-login-request' %}" class="redirect-button"> Login with magic link </a>
+    
 
 {% endblock %}

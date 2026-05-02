@@ -1,0 +1,33 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+
+{% if user.is_authenticated and es_el_autor %}
+    <a href = "{% url 'edit-article' id=article.id%}" class = "redirect-button"> Edit Article </a>
+    <a href = "{% url 'delete-article' id=article.id%}" class = "redirect-button"> Delete Article </a>
+{% endif %}
+
+
+<br>
+<br>
+<br>
+
+<article>
+
+    <header>
+        <h2>{{ article.author.name }}</h2>
+    </header>
+
+     <section>
+        <h4> {{article.text}} </h4>
+        <img src = {{article.picture.url}}, width="500">
+        {% if article.link %}
+            <a href = {{article.link}}> {{article.link}} </a>
+        {% endif %}
+    </section>
+
+            
+</article>
+
+ 
+{% endblock %}

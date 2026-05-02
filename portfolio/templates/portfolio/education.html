@@ -3,7 +3,7 @@
 {% block content %}
 
 <section>
-    {% if user.is_authenticated and user.groups.all.0.name == "gestor-portfolio" %}
+    {% if user.is_authenticated and es_gestor %}
         <a href = "{% url 'new-education' %}" class = "redirect-button"> New Education </a>
     {% endif %}
     

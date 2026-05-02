@@ -7,53 +7,44 @@ from django.contrib.auth.decorators import user_passes_test, login_required
 def es_gestor(user):
     return user.groups.filter(name='gestor-portfolio').exists()
 
-@login_required
 def professors_view(request):
     professors = Professor.objects.prefetch_related('subjects').all()
     return render(request, 'portfolio/professors.html', {'professors': professors})
 
-@login_required
 def subjects_view(request):
     subjects = Subject.objects.select_related('degree').prefetch_related('professors').all()
     return render(request, 'portfolio/subjects.html', {'subjects': subjects})
 
-@login_required
 def degrees_view(request):
     degrees = Degree.objects.all()
     return render(request, 'portfolio/degrees.html', {'degrees': degrees})
 
-@login_required
 def projects_view(request):
     projects = Project.objects.select_related('subject').all()
-    return render(request, 'portfolio/projects.html', {'projects': projects})
+    return render(request, 'portfolio/projects.html', {'projects': projects, 'es_gestor':es_gestor(request.user)})
 
 
-@login_required
 def competences_view(request):
     competences = Competence.objects.prefetch_related('technologies').all()
-    return render(request, 'portfolio/competences.html', {'competences': competences})
+    return render(request, 'portfolio/competences.html', {'competences': competences, 'es_gestor':es_gestor(request.user)})
 
-@login_required
+
 def technologies_view(request):
     technologies = Technology.objects.prefetch_related('competences').all()
-    return render(request, 'portfolio/technologies.html', {'technologies': technologies})
+    return render(request, 'portfolio/technologies.html', {'technologies': technologies, 'es_gestor':es_gestor(request.user)})
 
-@login_required
 def tfcs_view(request):
     tfcs = Tfc.objects.select_related('degree').all()
     return render(request, 'portfolio/tfcs.html', {'tfcs': tfcs})
 
-@login_required
 def education_view(request):
     education = Education.objects.all().order_by('start_year')
-    return render(request, 'portfolio/education.html', {'education': education})
+    return render(request, 'portfolio/education.html', {'education': education, 'es_gestor':es_gestor(request.user)})
 
-@login_required
 def languages_view(request):
     languages = Language.objects.all()
     return render(request, 'portfolio/languages.html', {'languages': languages})
 
-@login_required
 def makingof_view(request):
     makingof = MakingOf.objects.all()
     return render(request, 'portfolio/makingof.html', {'makingof': makingof})
@@ -62,7 +53,7 @@ def makingof_view(request):
 @login_required
 def project_view(request, id):
     project = Project.objects.get(id=id)
-    context = {'project':project}
+    context = {'project':project, 'es_gestor':es_gestor(request.user)}
 
     return render(request, 'portfolio/project.html', context)
 
@@ -108,7 +99,7 @@ def delete_project_view(request, id):
 @login_required
 def technology_view(request, id):
     technology = Technology.objects.get(id=id)
-    context = {'technology':technology}
+    context = {'technology':technology, 'es_gestor':es_gestor(request.user)}
 
     return render(request, 'portfolio/technology.html', context)
 
@@ -153,7 +144,7 @@ def delete_technology_view(request, id):
 @login_required
 def competence_view(request, id):
     competence = Competence.objects.get(id=id)
-    context = {'competence':competence}
+    context = {'competence':competence, 'es_gestor':es_gestor(request.user)}
 
     return render(request, 'portfolio/competence.html', context)
 
@@ -201,7 +192,7 @@ def delete_competence_view(request, id):
 @login_required
 def education_details_view(request, id):
     education = Education.objects.get(id=id)
-    context = {'education':education}
+    context = {'education':education, 'es_gestor':es_gestor(request.user)}
 
     return render(request, 'portfolio/education_details.html', context)
 

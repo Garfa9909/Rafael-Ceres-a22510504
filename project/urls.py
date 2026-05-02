@@ -23,6 +23,7 @@ urlpatterns = [
     path("school/", include("school.urls")), 
     path("portfolio/", include("portfolio.urls")), 
     path("accounts/", include("accounts.urls")), 
+    path("articles/", include("articles.urls")), 
     path("", include("portfolio.urls")),
 
 ]

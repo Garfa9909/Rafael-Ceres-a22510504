@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "portfolio",
     "school",
     "accounts",
+    "articles",
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -135,3 +136,6 @@ MEDIA_URL = '/media/'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'login'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

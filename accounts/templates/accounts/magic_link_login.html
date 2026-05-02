@@ -1,0 +1,17 @@
+{% extends "portfolio/base.html" %}
+    
+{% block content %}
+<h2> Magic Link Login </h2>
+
+<form method = "POST" action = {% url 'magic-link-login-request' %}>
+    {%csrf_token%}
+    {{ form.as_p }}
+    <button type="submit" class = "submit-button">Send email</button>
+    {% if not valid %}
+        <p class = "error-msg"> User with that email does not exist </p>
+    {% endif %}
+</form>
+<a href = "{% url 'login' %}" class="redirect-button"> Login with credentials </a>
+
+
+{% endblock %}
