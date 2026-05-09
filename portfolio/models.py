@@ -66,10 +66,10 @@ class Project(models.Model):
         return self.name
 
 class Tfc(models.Model):
-    title = models.CharField(max_length = 1000)
-    author = models.CharField(max_length = 1000)
+    title = models.CharField(max_length = 100)
+    author = models.CharField(max_length = 100)
     year = models.IntegerField()
-    description = models.TextField()
+    description = models.CharField(max_length = 1000)
     degree = models.ForeignKey(Degree, on_delete = models.CASCADE, related_name = "tfcs")
 
     def __str__(self):
